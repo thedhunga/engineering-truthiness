@@ -1,0 +1,33 @@
+"""
+Private path configuration for Engineering Truthiness experiments.
+
+INSTRUCTIONS:
+1. Copy this file to config_paths_private.py
+2. Update the paths below to point to your private data
+3. The private config is automatically detected by notebooks
+4. DO NOT commit config_paths_private.py to version control
+
+This file is gitignored by default.
+"""
+from pathlib import Path
+
+# === UPDATE THESE PATHS ===
+
+# Root of your private data directory (e.g., Google Drive mount)
+REPO_ROOT = Path("/path/to/your/data/root")
+
+RUN_ID = "private_run"
+
+# Processed data directory
+DATADIR = REPO_ROOT / "data" / "processed" / RUN_ID
+OUTDIR = REPO_ROOT / "outputs" / "runs" / RUN_ID
+
+OUTDIR.mkdir(parents=True, exist_ok=True)
+
+# === Experiment 03: Clinical Trial Matching (Private Data) ===
+# These parquet files contain the private eICU + ClinicalTrials.gov data.
+# Update paths if your data is stored differently.
+
+PPATF = REPO_ROOT / "data" / "clinical" / "patients.parquet"      # Patient attributes
+PCTTI = REPO_ROOT / "data" / "clinical" / "trials.parquet"         # Trial information
+PGOLD = REPO_ROOT / "data" / "clinical" / "pairs_gold.parquet"     # Patient-trial pairs
